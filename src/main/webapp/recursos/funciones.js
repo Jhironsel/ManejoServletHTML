@@ -1,13 +1,13 @@
 function validarFormulario(forma) {
     const usuario = forma.txtUsuario;
-    if (usuario.value == '') {
+    if (usuario.value === '') {
         alert('Debe ingresar un usuario!');
         usuario.focus();
         return false;
     }
 
     const password = forma.txtPassword;
-    if (password.value == '') {
+    if (password.value === '') {
         alert('Debe ingresar la contraseña!');
         password.focus();
         return false;
@@ -30,7 +30,7 @@ function validarFormulario(forma) {
     
     let ocupacion = forma.ocupacion;
     
-    if(ocupacion.value == "0"){
+    if(ocupacion.value === "0"){
         alert('Debe seleccionar una ocupacion!');
         return false;
     }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejercicios de Manejo de Formularios HTML</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="recursos/estilos.css" rel="stylesheet" type="text/css"/>
+        <script src="recursos/funciones.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <form action="/ManejoFormulariosHTML/mostrarDatosUsuarios" method="post" 
+            onsubmit="return validarFormulario(this)">
+            
+            <input type="hidden" name="oculto" value="valorOculto"/>
+            
+            <table width="200px" id="enfasis-columna">
+                <caption>
+                    Formulario de registro de Datos
+                </caption>
+                <tr>
+                    <td class="columna">
+                        (*) Usuario: 
+                    </td>
+                    <td>
+                        <input type="text" class="default" name="txtUsuario" placeholder="Ingrese el usuario."
+                               onfocus="this.select()">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        (*) Password:
+                    </td>
+                    <td>
+                        <input type="password" name="txtPassword" class="default" placeholder="Ingrese contraseña."
+                               minlength="8" onfocus="this.select()">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        (*) Tecnologia de interes:
+                    </td>
+                    <td>
+                        Java <input type="checkbox" name="tecnologia" value="java">
+                        &nbsp;
+                        .NET <input type="checkbox" name="tecnologia" value="net">
+                        &nbsp;
+                        Php <input type="checkbox" name="tecnologia" value="php">
+                        &nbsp;
+                        Angular <input type="checkbox" name="tecnologia" value="angular">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        (*) Genero:
+                    </td>
+                    <td>
+                        Hombre <input type="radio" name="genero" value="h" checked>
+                        &nbsp;
+                        Mujer <input type="radio" name="genero" value="m">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        (*) Ocupación:
+                    </td>
+                    <td>
+                        <select name="ocupacion" class="default">
+                            <option value="0">Seleccione una opcion</option>
+                            <option value="1">Profesor</option>
+                            <option value="2">Ingeniero</option>
+                            <option value="3">Jubilado</option>
+                            <option value="4">Otro</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        Musica favorita:
+                    </td>
+                    <td>
+                        <select name="musica" multiple class="default">
+                            <option value="Rap">Rap</option>
+                            <option value="Rock">Rock</option>
+                            <option value="HipHop">Hip Hop</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columna">
+                        Comentarios:
+                    </td>
+                    <td>
+                        <textarea  name="comentario" rows="5" cols="30" 
+                                   class="default" onfocus="this.select()" >
+                            Escribir comentarios aqui
+                        </textarea>
+                    </td>
+                </tr>
+                <tr style="text-align: center">
+                    <td>
+                        <input type="reset" value="Limpiar" class="default">
+                    </td>
+                    <td>
+                        <input type="submit" value="Enviar" class="default">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </body>
+</html>
