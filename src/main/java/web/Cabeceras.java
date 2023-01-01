@@ -33,7 +33,6 @@ public class Cabeceras extends HttpServlet{
             
             while(headerNames.hasMoreElements()){
                 String element = headerNames.nextElement();
-                
                 out.println("=> "+ element +"   |   "+req.getHeader(element));                
             }
             

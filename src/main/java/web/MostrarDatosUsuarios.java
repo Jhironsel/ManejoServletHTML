@@ -51,7 +51,6 @@ public class MostrarDatosUsuarios extends HttpServlet {
         out.print("<tr> <td>Ocupaccion:</td> <td>" + ocupacion + "</td> </tr>");
         out.print("<tr> <td>Musica Favorita:</td> <td>" + auxMuc.strip() + "</td> </tr>");
         out.print("<tr> <td>Comentario:</td> <td>" + comentario + "</td> </tr>");
-
         out.print("</table> </body> </html>");
 
     }
