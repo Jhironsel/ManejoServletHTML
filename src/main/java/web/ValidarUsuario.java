@@ -24,8 +24,23 @@ public class ValidarUsuario extends HttpServlet{
         String usuario = req.getParameter("txtUsuario");
         String clave = req.getParameter("txtPassword");
         
-        System.out.println("Usuario: "+usuario);
-        System.out.println("  Clave: "+clave);
+        boolean nuevoUsuario = true;
+        
+        Cookie[] cokies = req.getCookies();
+        
+        if(cokies != null){
+            for (Cookie coky : cokies) {
+                if(coky.getName().equals("visitanteRecurrente") && coky.getValue().equals("si")){
+                    nuevoUsuario = false;
+                    break;
+                }
+            }
+        }
+        
+        if(nuevoUsuario){
+            Cookie c = new Cookie("visitanteRecurrente", "si");
+            resp.addCookie(c);
+        }
         
         try (PrintWriter out = resp.getWriter()) {
             if(usuario.isBlank() || usuario.isEmpty()){
@@ -45,12 +60,16 @@ public class ValidarUsuario extends HttpServlet{
             
             
             out.println("Los datos son correctos.");
+            out.println("<br/>");
             out.println("<a href=\"index.html\">Inicio</a>");
+            out.println("<br/>");
+            out.println("<br/>");
+            
+            if(nuevoUsuario){
+                out.println("Bienvenido...");
+            }else{
+                out.print("Saludos nuevamente.");
+            }
         }
-        
     }
-    
-    
-    
-    
 }

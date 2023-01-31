@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 @WebServlet("/cabeceras")
-public class Cabeceras extends HttpServlet{
+public class Cabeceras extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,30 +24,31 @@ public class Cabeceras extends HttpServlet{
 
     private void resuelve(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; chartset=UTF8");
-        Enumeration<String> headerNames = req.getHeaderNames();
-        
-        try(PrintWriter out = resp.getWriter();){
-            out.println("Metodo utilizado es: "+req.getMethod());
+
+        try (PrintWriter out = resp.getWriter();) {
+            out.println("Metodo utilizado es: " + req.getMethod());
             out.println("<br/>");
-            out.println("\nLa URI utilizada es:"+req.getRequestURI());
+            out.println("\nLa URI utilizada es:" + req.getRequestURI());
             out.println("<br/>");
-            out.println("\nLa URI id Session:"+req.getRequestedSessionId());
+            out.println("\nLa URI id Session:" + req.getRequestedSessionId());
             out.println("<br/>");
-            out.println("\nLa URL:"+req.getRequestURL());
+            out.println("\nLa URL:" + req.getRequestURL());
             out.println("<br/>");
-            
+
             out.println("");
-            while(headerNames.hasMoreElements()){
+            
+            Enumeration<String> headerNames = req.getHeaderNames();
+            
+            while (headerNames.hasMoreElements()) {
                 String element = headerNames.nextElement();
-                out.println("=> "+ element.concat("               ").substring(0, 19) +"\t|\t"+req.getHeader(element));
+                out.println("=> " + element.concat("               ").
+                        substring(0, 19) + "\t|\t" + req.getHeader(element));
                 out.println("<br/>");
             }
-            
-            
+
             out.println("<a href=\"index.html\">Inicio</a>");
         }
-        
+
     }
-    
-    
+
 }

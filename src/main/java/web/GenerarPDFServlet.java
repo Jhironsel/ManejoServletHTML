@@ -8,9 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/generarExcel")
-public class GenerarExcelServlet extends HttpServlet{
-    
+@WebServlet("/generarPDF")
+public class GenerarPDFServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ambos(req, resp);
@@ -23,8 +23,8 @@ public class GenerarExcelServlet extends HttpServlet{
 
     private void ambos(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //Indicamos el tipo de respuesta al navegador.
-        resp.setContentType("application/vnd.ms-excel");
-        resp.setHeader("Content-disposition", "attachment;filename=excelEjemplo.xls");
+        resp.setContentType("application/pdf");
+        resp.setHeader("Content-Disposition", "attachment;filename=pdfEjemplo.pdf");
 
         //poi.apache.org
         //Indicamos al navegador que no guarde cache
@@ -32,12 +32,12 @@ public class GenerarExcelServlet extends HttpServlet{
         resp.setHeader("Cache-Control", "no-store");
         resp.setDateHeader("Expires", -1);
 
-        //Desplegamos la informacion al cliente.
-        try (PrintWriter out = resp.getWriter()) {
-            out.println("\tValores");
-            out.println("\t20");
-            out.println("\t45");
-            out.println("Total\t=SUMA(B2:B3)");
+         //Desplegamos la informacion al cliente.
+         try (PrintWriter out = resp.getWriter()) {
+            out.println("Valores");
+            out.println("20");
+            out.println("45");
+            out.println("Total:");
         }
     }
 

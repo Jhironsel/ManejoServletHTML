@@ -33,11 +33,9 @@ public class HoraServlet extends HttpServlet{
         
         String hora = f.format(fecha);
         
-        PrintWriter out = resp.getWriter();
-        
-        out.print(hora);
-        
-        out.close();
+        try (PrintWriter out = resp.getWriter()) {
+            out.print(hora);
+        }
     }
     
     
